@@ -33,14 +33,17 @@
       max-width: 400px;
     }
     img {
-      max-width: 100%;
+      max-width: 90%;
       border: 5px solid #ff66cc;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255, 102, 204, 0.5);
     }
+    .bottom-section {
+      margin-top: 15px;
+    }
     h1 {
       color: #ff3399;
-      margin: 15px 0 5px;
+      margin: 10px 0;
     }
     p {
       font-size: 18px;
@@ -51,13 +54,16 @@
 </head>
 <body>
   <!-- Initial message -->
-  <div id="startMessage">✨ Click anywhere to see the magic ✨</div>
+  <div id="startMessage">✨ Click anywhere to open your card ✨</div>
 
   <!-- Hidden card -->
   <div class="card" id="birthdayCard">
     <img src="birthday_card.png" alt="Birthday Card">
-    <h1>🎉 Happy Birthday! 🎂</h1>
-    <p>Wishing you joy, laughter, and lots of cake!</p>
+
+    <div class="bottom-section">
+      <h1>🎉 Happy Birthday! 🎂</h1>
+      <p>Wishing you joy, laughter, and lots of cake!</p>
+    </div>
   </div>
 
   <!-- Background music -->
@@ -70,7 +76,7 @@
     // When user clicks anywhere, show card + start music
     document.body.addEventListener("click", function() {
       document.getElementById("startMessage").style.display = "none";
-      document.getElementById("birthdayCard").style.display = "block";
+      document.getElementById("birthdayCard").style.display = "inline-block";
       document.getElementById("birthdaySong").play();
     }, { once: true }); // only first click triggers
   </script>
