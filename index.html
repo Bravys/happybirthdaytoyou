@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday!</title>
+
+  <!-- Favicon (logo in tab) -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
   <style>
     body {
       text-align: center;
@@ -22,16 +26,19 @@
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255, 102, 204, 0.5);
     }
+    .bottom-section {
+      margin-top: 20px;
+    }
     h1 {
       color: #ff3399;
-      margin-top: 20px;
+      margin: 10px 0;
     }
     p {
       font-size: 20px;
       color: #333;
+      margin: 5px 0 15px;
     }
     button {
-      margin-top: 20px;
       padding: 12px 25px;
       font-size: 18px;
       background-color: #ff66cc;
@@ -50,13 +57,15 @@
   <div class="card">
     <!-- Your birthday card image -->
     <img src="birthday_card.png" alt="Birthday Card">
-    <h1>🎉 Happy Birthday! 🎂</h1>
-    <p>Wishing you joy, laughter, and lots of cake!</p>
-    
-    <!-- Play button -->
-    <button onclick="document.getElementById('birthdaySong').play()">
-      🎵 Play Happy Birthday Song
-    </button>
+
+    <!-- Bottom section with text + button -->
+    <div class="bottom-section">
+      <h1>🎉 Happy Birthday! 🎂</h1>
+      <p>Wishing you joy, laughter, and lots of cake!</p>
+      <button id="playBtn" onclick="document.getElementById('birthdaySong').play()">
+        🎵 Play Happy Birthday Song
+      </button>
+    </div>
   </div>
 
   <!-- Background music -->
@@ -64,5 +73,14 @@
     <source src="happybirthday.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <!-- Auto press button after 1 second -->
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById("playBtn").click();
+      }, 1000); // 1000 ms = 1 second
+    };
+  </script>
 </body>
 </html>
