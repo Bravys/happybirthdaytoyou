@@ -30,6 +30,20 @@
       font-size: 20px;
       color: #333;
     }
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #ff66cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #ff3399;
+    }
   </style>
 </head>
 <body>
@@ -38,10 +52,15 @@
     <img src="birthday_card.png" alt="Birthday Card">
     <h1>🎉 Happy Birthday! 🎂</h1>
     <p>Wishing you joy, laughter, and lots of cake!</p>
+    
+    <!-- Play button -->
+    <button onclick="document.getElementById('birthdaySong').play()">
+      🎵 Play Happy Birthday Song
+    </button>
   </div>
 
   <!-- Background music -->
-  <audio autoplay loop>
+  <audio id="birthdaySong" loop>
     <source src="happybirthday.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
