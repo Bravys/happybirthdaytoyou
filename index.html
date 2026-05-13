@@ -9,31 +9,38 @@
 
   <style>
     body {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
       background: linear-gradient(to bottom, #ffe0f0, #fff);
       font-family: 'Comic Sans MS', cursive;
       margin: 0;
       padding: 0;
+      text-align: center;
+    }
+    #startMessage {
+      font-size: 22px;
+      color: #ff3399;
+      cursor: pointer;
     }
     .card {
-      margin-top: 40px;
-      padding: 10px;
-      display: inline-block;
-      background: white; /* keep card clean */
+      display: none; /* hidden at start */
+      background: white;
+      padding: 20px;
       border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 102, 204, 0.3);
+      max-width: 400px;
     }
     img {
-      max-width: 90%;
+      max-width: 100%;
       border: 5px solid #ff66cc;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255, 102, 204, 0.5);
     }
-    .bottom-section {
-      margin-top: 15px;
-    }
     h1 {
       color: #ff3399;
-      margin: 10px 0;
+      margin: 15px 0 5px;
     }
     p {
       font-size: 18px;
@@ -49,7 +56,6 @@
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      display: inline-block;
     }
     button:hover {
       background-color: #ff3399;
@@ -57,18 +63,17 @@
   </style>
 </head>
 <body>
-  <div class="card">
-    <!-- Your birthday card image -->
-    <img src="birthday_card.png" alt="Birthday Card">
+  <!-- Initial message -->
+  <div id="startMessage">✨ Click anywhere to open your card ✨</div>
 
-    <!-- Bottom section with text + button -->
-    <div class="bottom-section">
-      <h1>🎉 Happy Birthday! 🎂</h1>
-      <p>Wishing you joy, laughter, and lots of cake!</p>
-      <button id="playBtn" onclick="document.getElementById('birthdaySong').play()">
-        🎵 Play Happy Birthday Song
-      </button>
-    </div>
+  <!-- Hidden card -->
+  <div class="card" id="birthdayCard">
+    <img src="birthday_card.png" alt="Birthday Card">
+    <h1>🎉 Happy Birthday! 🎂</h1>
+    <p>Wishing you joy, laughter, and lots of cake!</p>
+    <button onclick="document.getElementById('birthdaySong').play()">
+      🎵 Play Happy Birthday Song
+    </button>
   </div>
 
   <!-- Background music -->
@@ -77,13 +82,13 @@
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Auto press button after 1 second -->
   <script>
-    window.onload = function() {
-      setTimeout(function() {
-        document.getElementById("playBtn").click();
-      }, 1000); // 1000 ms = 1 second
-    };
+    // When user clicks anywhere, show card + start music
+    document.body.addEventListener("click", function() {
+      document.getElementById("startMessage").style.display = "none";
+      document.getElementById("birthdayCard").style.display = "block";
+      document.getElementById("birthdaySong").play();
+    }, { once: true }); // only first click triggers
   </script>
 </body>
 </html>
